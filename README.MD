@@ -180,3 +180,98 @@ yarn create react-app
 
 
 #### Build Responsive Navigation
+##### Part 1
+1) Build `ResponseNavigation` directory/file structure
+
+    <img src = "respNav_layout.png" alt = "Responsive navigation structure">
+
+2) Add to `App.js`
+
+   - add import
+
+   ~~~ js 
+   import ResponsiveNavigation from './components/ResponsiveNavigation'
+   ~~~
+
+   - add to `return`
+
+   ~~~ js
+   return (
+       <div className="App">
+           <ResponsiveNavigation
+               navLinks = {navLinks}
+               logo = {logo}
+               background = "#eee"
+               hoverBackground = "#ddd"
+               linkColor = "#888"
+
+           />
+
+           <Router>
+   ~~~
+
+3) Create initial `ResponsiveNavigation` component to render props
+
+    ~~~ js
+    import React, {useState} from 'react';
+    import {Link} from '@reach/router';
+
+    function ResponseNavigation({navLinks, background, hoverBackground, linkColor, logo}) {
+        // Add Hooks to manage hoverIndex
+        const [hoverIndex, setHowverIndex] = useState(-1) // default state is -1
+        const [navOpen, setNavOpen] = useState(false)
+
+        return(
+            <nav
+                class = 'responsive-toolbar'
+                style = {{ background}}
+            > {/* // outside {} is for JSX, inside {} is to return object */}
+                <ul 
+                    style = {{background}}
+
+                >
+                    {navLinks.map((link) => 
+                        <li>
+                            <Link
+                                to = {link.path}
+                                style = {{ color: linkColor}}
+                            >
+                                {link.text}
+                            </Link>    
+                        
+                        </li>    
+                    )}
+                </ul>
+            </nav>
+        )
+
+
+    }
+
+    export default ResponseNavigation
+    ~~~
+
+4) Add basic styling to `toolbar.scss`
+
+    ~~~ scss
+    nav.responsive-toolbar {
+        background: '#333';
+        height: 60px;
+        width: 100%
+
+        ul {
+
+
+            
+        }
+
+    }
+    ~~~
+
+5) Run `yarn start` to verify layout
+
+    <img src = "respNav_layout.png" >
+
+
+##### Part 2
+1) 

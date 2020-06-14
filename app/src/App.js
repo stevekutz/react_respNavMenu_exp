@@ -1,6 +1,6 @@
 import React from 'react';
 import {Router} from '@reach/router';
-// import logo from './logo.svg';
+import logo from './logo.svg';
 import './App.css';
 
 import About from './pages/About';
@@ -9,6 +9,7 @@ import Contact from './pages/Contact';
 import Home from './pages/Home';
 import Portfolio from './pages/Portfolio';
 
+import ResponsiveNavigation from './components/ResponsiveNavigation';
 
 function App() {
     const navLinks = [
@@ -42,12 +43,21 @@ function App() {
   
     return (
         <div className="App">
+            <ResponsiveNavigation
+                navLinks = {navLinks}
+                logo = {logo}
+                background = "#eee"
+                hoverBackground = "#ddd"
+                linkColor = "#888"
+
+            />
+
             <Router>
                 <About path = '/about'/>
                 <Blog path = '/blog' />
                 <Contact path = '/contact' />
                 <Home path = '/home' />
-                <Portfolio path = '/portfolio' />
+                <Portfolio path = '/portfolio'/>
             </Router>
         </div>
   );
