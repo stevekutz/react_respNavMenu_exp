@@ -4,9 +4,12 @@ nav.responsive-toolbar {
     width: 100%
 
     ul {
-
-
-        
+        display: flex;
+        margin-block-start: 0;
+        margin-block-end: 0;
+        margin-inline-start: 0;
+        height: 100%;
+        align-items: center;
     }
 
 }

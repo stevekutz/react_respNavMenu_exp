@@ -223,7 +223,7 @@ yarn create react-app
 
         return(
             <nav
-                class = 'responsive-toolbar'
+                className = 'responsive-toolbar'
                 style = {{ background}}
             > {/* // outside {} is for JSX, inside {} is to return object */}
                 <ul 

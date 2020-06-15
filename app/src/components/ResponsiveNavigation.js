@@ -8,7 +8,7 @@ function ResponseNavigation({navLinks, background, hoverBackground, linkColor, l
 
     return(
         <nav
-            class = 'responsive-toolbar'
+            className = 'responsive-toolbar'
             style = {{ background}}
         > {/* // outside {} is for JSX, inside {} is to return object */}
             <ul 
