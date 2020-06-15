@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import {Link} from '@reach/router';
 
-function ResponseNavigation({navLinks, background, hoverBackground, linkColor, logo}) {
+function ResponsiveNavigation({navLinks, background, hoverBackground, linkColor, logo}) {
     // Add Hooks to manage hoverIndex
-    const [hoverIndex, setHowverIndex] = useState(-1) // default state is -1
+    const [hoverIndex, setHoverIndex] = useState(-1) // default state is -1
     const [navOpen, setNavOpen] = useState(false)
 
     return(
@@ -22,6 +22,7 @@ function ResponseNavigation({navLinks, background, hoverBackground, linkColor, l
                             style = {{ color: linkColor}}
                         >
                             {link.text}
+                            <i className = {link.icon}/>
                         </Link>    
                     
                     </li>    
@@ -33,4 +34,4 @@ function ResponseNavigation({navLinks, background, hoverBackground, linkColor, l
 
 }
 
-export default ResponseNavigation
+export default ResponsiveNavigation

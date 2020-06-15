@@ -56,7 +56,7 @@ yarn create react-app
                 {
                     text: 'Contact',
                     path: '/contact',
-                    icon: 'ion-ios-home',
+                    icon: 'ion-ios-megaphone',
                 },
                 {
                     text: 'About',
@@ -216,9 +216,9 @@ yarn create react-app
     import React, {useState} from 'react';
     import {Link} from '@reach/router';
 
-    function ResponseNavigation({navLinks, background, hoverBackground, linkColor, logo}) {
+    function ResponsiveNavigation({navLinks, background, hoverBackground, linkColor, logo}) {
         // Add Hooks to manage hoverIndex
-        const [hoverIndex, setHowverIndex] = useState(-1) // default state is -1
+        const [hoverIndex, setHoverIndex] = useState(-1) // default state is -1
         const [navOpen, setNavOpen] = useState(false)
 
         return(
@@ -248,30 +248,62 @@ yarn create react-app
 
     }
 
-    export default ResponseNavigation
+    export default ResponsiveNavigation
     ~~~
 
 4) Add basic styling to `toolbar.scss`
 
     ~~~ scss
     nav.responsive-toolbar {
-        background: '#333';
+        background: #333333;
         height: 60px;
-        width: 100%
+        width: 100%;
 
         ul {
+            background: #333333;
+            display: flex;
+            margin-block-start: 0;
+            margin-block-end: 0;
+            margin-inline-start: 0;
+            height: 100%;
+            align-items: center;
 
-
+            li {
+                list-style-type: none;
+                margin: 20px 10px;
+            }
             
+            a {
+                color: white;
+                text-decoration: none;
+            }
         }
 
     }
     ~~~
 
 5) Run `yarn start` to verify layout
-
-    <img src = "respNav_layout.png" >
-
+   
+    <img width = "50%" src = "Initial_layout.png"/>
 
 ##### Part 2
-1) 
+1) Import ionicons inside of `base.scss`
+
+    ~~~ scss 
+    @import url('https://unpkg.com/ionicons@4.2.2/dist/css/ionicons.min.css');
+    ~~~
+
+ 2) Add icons to `Link` within `ResponsiveNavigation.js`
+
+    ~~~ js
+    <Link
+        to = {link.path}
+        style = {{ color: linkColor}}
+    >
+        {link.text}
+        <i className = {link.icon}/>
+    </Link>  
+    ~~~
+
+3) To put icons before the link text, use flex and add styling to the icon
+

@@ -21,7 +21,7 @@ function App() {
             {
                 text: 'Contact',
                 path: '/contact',
-                icon: 'ion-ios-home',
+                icon: 'ion-ios-megaphone',
             },
             {
                 text: 'About',
@@ -46,9 +46,9 @@ function App() {
             <ResponsiveNavigation
                 navLinks = {navLinks}
                 logo = {logo}
-                background = "#eee"
-                hoverBackground = "#ddd"
-                linkColor = "#888"
+               // background = "#333"
+               // hoverBackground = "#ddd"
+               // linkColor = "#777"
 
             />
 
