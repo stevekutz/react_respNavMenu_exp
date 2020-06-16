@@ -264,7 +264,7 @@ yarn create react-app
             display: flex;
             margin-block-start: 0;
             margin-block-end: 0;
-            margin-inline-start: 0;
+            padding-inline-start: 0;
             height: 100%;
             align-items: center;
 
@@ -287,7 +287,7 @@ yarn create react-app
     <img width = "50%" src = "Initial_layout.png"/>
 
 ##### Part 2
-1) Import ionicons inside of `base.scss`
+1) Import `ionicons` inside of `base.scss`
 
     ~~~ scss 
     @import url('https://unpkg.com/ionicons@4.2.2/dist/css/ionicons.min.css');
@@ -307,3 +307,57 @@ yarn create react-app
 
 3) To put icons before the link text, use flex and add styling to the icon
 
+    ~~~ scss
+        li {
+        list-style-type: none;
+        padding: 10px 20px;
+        }
+
+        a {
+        color: white;
+        text-decoration: none;
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        }
+
+        i {
+        margin-right: 5px;
+        font-size: 20px;
+        }
+    ~~~
+
+4) To add hover styling
+- add `link` to map parameters
+- use anonymous functions to set hover index and add styling
+
+    ~~~ js
+        {navLinks.map((link, index) => 
+            <li
+                onMouseEnter = { () => setHoverIndex(index)}
+                onMouseLeave = { () => setHoverIndex(-1)}
+                style = {{background: hoverIndex === index ? (hoverBackground || '#999') : ''}}
+            >
+    ~~~
+
+5) Add `figure` to `ResposiveNavigation.js` 
+
+    ~~~ js
+        <figure className = "image-logo"
+        onClick = { () => {setNavOpen(!navOpen)}}
+        >
+        <img src = {logo} height = "40px" width = "40px" alt = "toolbar-logo"/>
+        </figure>
+    ~~~
+
+6) Add styling for figure in `toolbar.scss`
+
+    ~~~ scss
+        figure {
+        margin-block-start: 0;
+        margin-block-end: 0;
+        margin-inline-start: 10px;
+        margin-inline-end: 0;
+        cursor: pointer;
+        }
+    ~~~

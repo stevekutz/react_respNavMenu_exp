@@ -13,10 +13,20 @@ function ResponsiveNavigation({navLinks, background, hoverBackground, linkColor,
         > {/* // outside {} is for JSX, inside {} is to return object */}
             <ul 
                 style = {{background}}
-
+                classname = {navOpen ? 'active' : ''}
             >
-                {navLinks.map((link) => 
-                    <li>
+                <figure className = "image-logo"
+                    onClick = { () => {setNavOpen(!navOpen)}}
+                >
+                    <img src = {logo} height = "40px" width = "40px" alt = "toolbar-logo"/>
+                </figure>
+
+                {navLinks.map((link, index) => 
+                    <li
+                        onMouseEnter = { () => setHoverIndex(index)}
+                        onMouseLeave = { () => setHoverIndex(-1)}
+                        style = {{background: hoverIndex === index ? (hoverBackground || '#999') : ''}}
+                    >
                         <Link
                             to = {link.path}
                             style = {{ color: linkColor}}
