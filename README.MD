@@ -488,3 +488,21 @@ let img = logo;
 <img src = {img} height = "40px" width = "40px" alt = "toolbar-logo"/>
 
 ~~~
+5) Improved behavior of hamburger
+- only appears when window events trigger media query changes
+- menu collapses when mouse leaves navigation
+
+    ~~~ js
+    let img = logo;
+        
+        {(navOpen && window.innerWidth <= 759  )? img = burger : img = logo}
+    ~~~
+
+    ~~~ js
+    <nav
+        className = 'responsive-toolbar'
+        style = {{ background}}
+        onMouseLeave = { () => setNavOpen(0)}
+    ~~~
+
+
