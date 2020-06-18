@@ -258,6 +258,7 @@ yarn create react-app
         background: #333333;
         height: 60px;
         width: 100%;
+        position: fixed;
 
         ul {
             background: #333333;
@@ -282,11 +283,27 @@ yarn create react-app
     }
     ~~~
 
-5) Run `yarn start` to verify layout
+5) Fix page text from being covered up by nav bar
+   - The `position: fixed` will cover up the basic text on each page
+  
+    ~~~ scss
+        div.page-offset {
+            padding-top: 80px;
+        }
+    ~~~
+
+   - push the content down using padding an add the class to each div tag
+
+    ~~~ js
+        <div className = "page-offset">
+    ~~~
+
+6) Run `yarn start` to verify layout
    
     <img width = "50%" src = "Initial_layout.png"/>
 
 ##### Part 2
+
 1) Import `ionicons` inside of `base.scss`
 
     ~~~ scss 
@@ -328,8 +345,8 @@ yarn create react-app
     ~~~
 
 4) To add hover styling
-- add `link` to map parameters
-- use anonymous functions to set hover index and add styling
+   - add `link` to map parameters
+   - use anonymous functions to set hover index and add styling
 
     ~~~ js
         {navLinks.map((link, index) => 
@@ -342,6 +359,9 @@ yarn create react-app
 
 5) Add `figure` to `ResposiveNavigation.js` 
 
+    - `figure` is `Semantic HTML` and is used to specify self-contained content improves accessibility
+    - in this case, it encloses the `logo` image that toggles the opening/closing of a nav menu opening/closing 
+         
     ~~~ js
         <figure className = "image-logo"
         onClick = { () => {setNavOpen(!navOpen)}}
@@ -351,7 +371,7 @@ yarn create react-app
     ~~~
 
 6) Add styling for figure in `toolbar.scss`
-
+   - `cursor: pointer` changes mouse behavior when hovering over logo, suggesting that a mouse click may open a menu
     ~~~ scss
         figure {
         margin-block-start: 0;
@@ -360,4 +380,44 @@ yarn create react-app
         margin-inline-end: 0;
         cursor: pointer;
         }
+    ~~~
+
+##### part 3
+
+1) Add media query into `toolbar.scss`
+
+- notice how the `ul` changes `flex-direction` to column
+- the icons are switched around so appear on the right
+
+    ~~~ scss
+    @media screen and (max-width: 759px) {
+        nav.responsive-toolbar {
+            ul {
+                height: 100%;
+                width: 300px;
+                position: fixed;
+                left: 0;
+                top: 0;
+                flex-direction: column;
+
+                li {
+                    width: 100%;
+                    padding-left: 0;
+                    padding-right: 0;
+                }
+
+                a {
+                    flex-direction: row;
+                    justify-content: space-between;
+                    margin-left: 20px;
+                    margin-right: 13px;
+                }
+            }
+
+        }
+
+        div.page-offset {
+            padding-left: 300px;
+        }
+    }
     ~~~

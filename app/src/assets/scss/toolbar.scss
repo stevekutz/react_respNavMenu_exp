@@ -1,3 +1,8 @@
+div.page-offset {
+    padding-top: 80px;
+
+}
+
 nav.responsive-toolbar {
     background: #333333;
     height: 60px;
@@ -40,4 +45,35 @@ nav.responsive-toolbar {
         }
     }
 
+}
+
+@media screen and (max-width: 759px) {
+    nav.responsive-toolbar {
+        ul {
+            height: 100%;
+            width: 300px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            flex-direction: column;
+
+            li {
+                width: 100%;
+                padding-left: 0;
+                padding-right: 0;
+            }
+
+            a {
+                flex-direction: row;
+                justify-content: space-between;
+                margin-left: 20px;
+                margin-right: 13px;
+            }
+        }
+
+    }
+
+    div.page-offset {
+        padding-left: 300px;
+    }
 }

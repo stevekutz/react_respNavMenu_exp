@@ -56,7 +56,7 @@ function App() {
                 <About path = '/about'/>
                 <Blog path = '/blog' />
                 <Contact path = '/contact' />
-                <Home path = '/home' />
+                <Home path = '/' />
                 <Portfolio path = '/portfolio'/>
             </Router>
         </div>

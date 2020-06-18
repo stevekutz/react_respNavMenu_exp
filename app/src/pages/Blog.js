@@ -5,7 +5,7 @@ class Blog extends React.Component {
     render() {
 
         return (
-            <div> Blog page </div>
+            <div className = "page-offset"> Blog page </div>
 
         )
     }

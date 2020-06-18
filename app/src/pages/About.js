@@ -5,7 +5,7 @@ class About extends Component {
     render() {
 
         return (
-            <div> About </div>
+            <div className = "page-offset"> About </div>
 
         )
     }
