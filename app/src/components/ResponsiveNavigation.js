@@ -4,7 +4,7 @@ import {Link} from '@reach/router';
 function ResponsiveNavigation({navLinks, background, hoverBackground, linkColor, logo}) {
     // Add Hooks to manage hoverIndex
     const [hoverIndex, setHoverIndex] = useState(-1) // default state is -1
-    const [navOpen, setNavOpen] = useState(false)
+    const [navOpen, setNavOpen] = useState(0)
 
     return(
         <nav
@@ -13,7 +13,7 @@ function ResponsiveNavigation({navLinks, background, hoverBackground, linkColor,
         > {/* // outside {} is for JSX, inside {} is to return object */}
             <ul 
                 style = {{background}}
-                classname = {navOpen ? 'active' : ''}
+                className = {navOpen ? 'active' : ''}
             >
                 <figure className = "image-logo"
                     onClick = { () => {setNavOpen(!navOpen)}}

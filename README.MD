@@ -228,7 +228,7 @@ yarn create react-app
             > {/* // outside {} is for JSX, inside {} is to return object */}
                 <ul 
                     style = {{background}}
-
+                    className = {navOpen ? 'active' : ''}
                 >
                     {navLinks.map((link) => 
                         <li>
@@ -390,34 +390,83 @@ yarn create react-app
 - the icons are switched around so appear on the right
 
     ~~~ scss
-    @media screen and (max-width: 759px) {
-        nav.responsive-toolbar {
-            ul {
-                height: 100%;
-                width: 300px;
-                position: fixed;
-                left: 0;
-                top: 0;
-                flex-direction: column;
+        @media screen and (max-width: 759px) {
+            nav.responsive-toolbar {
+                ul {
+                    height: 100%;
+                    width: 200px;
+                    position: fixed;
+                    left: -140px;
+                    top: 60px;
+                    flex-direction: column;
 
-                li {
-                    width: 100%;
-                    padding-left: 0;
-                    padding-right: 0;
+                    figure {
+                        margin-inline-start: 2px;
+                        position: fixed;
+                        left: 10px;
+                        top: 10px;
+                    }
+
+                    li {
+                        width: 100%;
+                        padding-left: 0;
+                        padding-right: 0;
+                    }
+
+                    a {
+                        flex-direction: row;
+                        justify-content: space-between;
+                        margin-left: 20px;
+                        margin-right: 16px;
+                    }
                 }
 
-                a {
-                    flex-direction: row;
-                    justify-content: space-between;
-                    margin-left: 20px;
-                    margin-right: 13px;
-                }
             }
 
+            div.page-offset {
+                padding-left: 80px;
+            }
         }
-
-        div.page-offset {
-            padding-left: 300px;
-        }
-    }
     ~~~
+    
+2) Add a box-shadow
+
+~~~ scss
+nav.responsive-toolbar {
+    background: #333333;
+    height: 60px;
+    width: 100%;
+    position: fixed;
+    box-shadow: 2px 0px 2px #ccc;
+
+    ul {
+        background: #333333;
+        display: flex;
+        margin-block-start: 0;
+        margin-block-end: 0;
+        padding-inline-start: 0;
+        height: 100%;
+        align-items: center;
+        box-shadow: 2px 2px 2px #ccc;
+~~~
+
+3) Create menu box that opens
+
+   - add transition & active class attributes
+
+   ~~~ scss
+   @media screen and (max-width: 759px) {
+       nav.responsive-toolbar {
+           ul {
+               height: 100%;
+               width: 200px;
+               position: fixed;
+               left: -140px;
+               top: 60px;
+               flex-direction: column;
+               transition: 300ms ease all;
+
+               &.active {
+                   left: 0px;
+               }
+   ~~~
