@@ -470,3 +470,21 @@ nav.responsive-toolbar {
                    left: 0px;
                }
    ~~~
+
+4) Added img toggle when menu opened
+- import hamburger image
+
+~~~ js
+import burger from './burger.png';
+~~~
+
+- add some logic to toggle `src = {img}` used within `figure`
+
+~~~ js
+let img = logo;
+{navOpen ? img = logo : img = burger}
+
+....
+<img src = {img} height = "40px" width = "40px" alt = "toolbar-logo"/>
+
+~~~

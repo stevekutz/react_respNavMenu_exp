@@ -1,11 +1,15 @@
 import React, {useState} from 'react';
 import {Link} from '@reach/router';
+import burger from './burger.png';
 
 function ResponsiveNavigation({navLinks, background, hoverBackground, linkColor, logo}) {
     // Add Hooks to manage hoverIndex
     const [hoverIndex, setHoverIndex] = useState(-1) // default state is -1
     const [navOpen, setNavOpen] = useState(0)
 
+    let img = logo;
+    {navOpen ? img = logo : img = burger}
+    
     return(
         <nav
             className = 'responsive-toolbar'
@@ -17,8 +21,8 @@ function ResponsiveNavigation({navLinks, background, hoverBackground, linkColor,
             >
                 <figure className = "image-logo"
                     onClick = { () => {setNavOpen(!navOpen)}}
-                >
-                    <img src = {logo} height = "40px" width = "40px" alt = "toolbar-logo"/>
+                >     
+                    <img src = {img} height = "40px" width = "40px" alt = "toolbar-logo"/>
                 </figure>
 
                 {navLinks.map((link, index) => 
